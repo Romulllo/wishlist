@@ -1,0 +1,16 @@
+<div class="row row-cols-1 row-cols-md-3 m-3">
+  <% @wishes.each do |wish| %>
+    <div class="col mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5><%= link_to wish.title, wish_path(id: wish.id), class: 'card-title' %></h5>
+          <h6 class="card-subtitle mb-2 text-muted"><%= wish.priority.titleize %> Priority</h6>
+          <p class="card-text"><%= truncate(wish.description, length: 150, omission: '... (continued)') %></p>
+          <%= link_to 'Go to link', wish.url, class: 'card-link', target: '_blank' %>
+          <%= link_to 'Edit', edit_wish_path(id: wish.id), class: 'card-link' %>
+          <%= link_to 'Destroy', wish_path(id: wish.id), method: :delete, data: {confirm: "Are you sure?"}, class: 'card-link' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

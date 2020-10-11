@@ -1,0 +1,8 @@
+<h3>Edit Wish</h3>
+<%= form_with model: @wish do |form| %>
+  <p>Title<%= form.text_field :title %></p>
+  <p>Description<%= form.text_area :description %></p>
+  <p>Url<%= form.text_field :url %></p>
+  <p>Priority<%= form.select :priority, Wish.priorities.keys.map { |p| [ p.titleize, p ] } %></p>
+  <p><%= form.submit 'Submit' %></p>
+<% end %>
